@@ -1,5 +1,6 @@
-var http = require("http");
+"use strict";
 
+var http = require("http");
 var server = http.createServer();
 
 server.on("request", function(request, response) {
