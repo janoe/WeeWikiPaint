@@ -26,3 +26,19 @@ exports.testHttpServerIsWorking = function(test){
         });
     });
 };
+
+exports.test_serverReturnsHelloWorld = function(test){
+    server.start(function(){
+        console.log("Servidor iniciado");
+    });
+    http.get("http://" + process.env.IP + ":" + process.env.PORT,function(response){
+        test.equals(200,response.statusCode,"status code");
+        console.log("Response: " + response.data);
+        response.setEncoding("utf8");
+        response.on("data",function(chunk){
+            console.log("Data processing" + chunk);
+            test.equals("Hello World",chunk,"response data");
+            test.done();
+        });
+    });
+};

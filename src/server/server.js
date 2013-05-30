@@ -10,7 +10,7 @@ exports.start = function() {
 
     server.on("request", function(request, response) {
         console.log("Received request");
-        var body = "<html><head><title>HTML Spkie test</title></head><body>This is a node's HTTP server</body></html>";
+        var body = "Hello World";
         response.end(body);
     });
 };
