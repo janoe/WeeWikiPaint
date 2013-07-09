@@ -8,7 +8,7 @@
     task("default", ["lint", "test"]);
 
     desc("Lint everything");
-    task("lint", [], function() {
+    task("lint", ["node"], function() {
         var lint = require("./build/lint/lint_runner.js");
 
         var files = new jake.FileList();
@@ -39,6 +39,23 @@
         console.log("3. 'git checkout integration'");
         console.log("4. 'git merge master --no-ff --log'");
         console.log("5. 'git checkout master'");
+    });
+
+    desc("Ensure correct version of Node is present.");
+    task("node",[],function(){
+        var command = "node --version";
+        console.log(">" + command);
+        var stdout = "";
+        var process = jake.createExec(command, {printStdout:true, printStderr: true});
+        process.on("stdout", function(chunk) {
+            stdout += chunk;
+		});
+		process.on("cmdEnd", function() {
+			console.log("BLABLABALASLSDASDLSDL:" + stdout);
+            //callback(stdout);
+		});
+        console.log("BLABLABALASLSDASDLSDL1:");
+        process.run();
     });
 
     function nodeLintOptions() {
