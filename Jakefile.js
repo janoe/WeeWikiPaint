@@ -67,11 +67,11 @@
             immed:true,
             latedef:true,
             newcap:true,
-            noarg:true,
             noempty:true,
             nonew:true,
             regexp:true,
             undef:true,
+            noarg:true,
             strict:true,
             trailing:true,
             node:true
